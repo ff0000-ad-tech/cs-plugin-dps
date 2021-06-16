@@ -18,7 +18,9 @@ switch (argv.cmd) {
 				// ensure that 3-traffic versions have been compiled
 				await compiler.execute(argv.profile, targets)
 				// run ads in puppeteer to discover dynamic dps assets
-				await assets.preflight(argv.origin, FOLDERS.traffic, targets)
+				const targetsData = await assets.preflight(argv.origin, FOLDERS.traffic, targets)
+				// retrieve dps assets
+				await assets.retrieve(`${argv.context}/${$FOLDERS.build}`, targetsData)
 			})()
 		break
 }
