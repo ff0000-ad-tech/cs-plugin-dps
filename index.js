@@ -16,11 +16,16 @@ switch (argv.cmd) {
 		const targets = JSON.parse(argv.targets)
 			; (async () => {
 				// ensure that 3-traffic versions have been compiled
-				await compiler.execute(argv.profile, targets)
+				// await compiler.execute(argv.profile, targets)
 				// run ads in puppeteer to discover dynamic dps assets
 				const targetsData = await assets.preflight(argv.origin, FOLDERS.traffic, targets)
+				// mutate targetsData with assets-folder, per target
+				assets.prepareAssetsFolder(`${argv.context}/${FOLDERS.build}`, targetsData)
 				// retrieve dps assets
-				await assets.retrieve(`${argv.context}/${$FOLDERS.build}`, targetsData)
+				await assets.retrieveImages(targetsData)
+				log({ targetsData })
+				// generate js imports script
+				assets.generateImports(targetsData)
 			})()
 		break
 }
