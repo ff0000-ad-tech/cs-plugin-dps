@@ -16,7 +16,7 @@ switch (argv.cmd) {
 		const targets = JSON.parse(argv.targets)
 			; (async () => {
 				// ensure that 3-traffic versions have been compiled
-				// await compiler.execute(argv.profile, targets)
+				await compiler.execute(targets, { inlined: false })
 				// run ads in puppeteer to discover dynamic dps assets
 				const targetsData = await assets.preflight(argv.origin, FOLDERS.traffic, targets)
 				// mutate targetsData with assets-folder, per target
@@ -26,6 +26,8 @@ switch (argv.cmd) {
 				log({ targetsData })
 				// generate js imports script
 				assets.generateImports(targetsData)
+				// recompile 3-traffic versions with inlined assets
+				await compiler.execute(targets, { inlined: true })
 			})()
 		break
 }
