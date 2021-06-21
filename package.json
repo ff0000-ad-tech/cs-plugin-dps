@@ -3,7 +3,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Creative Server Plugin - DPS Renderer, enables compiling static versions of units built to dynamically load their state from DPS.",
 	"main": "index.js",
 	"scripts": {
