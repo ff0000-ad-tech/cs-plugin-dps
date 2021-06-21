@@ -1,10 +1,10 @@
 {
-	"name": "@ff0000-ad-tech/cs-plugin-vendor-c20",
+	"name": "@ff0000-ad-tech/cs-plugin-dps-renderer",
 	"publishConfig": {
 		"access": "public"
 	},
 	"version": "1.0.0",
-	"description": "Creative Server Plugin - Vendor Container 2.0",
+	"description": "Creative Server Plugin - DPS Renderer, enables compiling static versions of units built to dynamically load their state from DPS.",
 	"main": "index.js",
 	"scripts": {
 		"pub": "np"
@@ -15,9 +15,9 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ff0000-ad-tech/cs-plugin-vendor-c20.git"
+		"url": "git+https://github.com/ff0000-ad-tech/cs-plugin-dps-renderer.git"
 	},
-	"author": "RED Interactive Agency",
+	"author": "160over90",
 	"license": "MIT",
 	"dependencies": {
 		"@ff0000-ad-tech/comment-hooks": "^1.1.0",
