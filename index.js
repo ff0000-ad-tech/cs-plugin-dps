@@ -15,12 +15,13 @@ switch (argv.cmd) {
 	case 'render':
 		const targets = JSON.parse(argv.targets)
 			; (async () => {
+				const context = `${argv.context}/${FOLDERS.build}`
 				// ensure that 3-traffic versions have been compiled
 				await compiler.execute(targets, { inlined: false })
 				// run ads in puppeteer to discover dynamic dps assets
 				const targetsData = await assets.preflight(argv.origin, FOLDERS.traffic, targets)
 				// mutate targetsData with assets-folder, per target
-				assets.prepareAssetsFolder(`${argv.context}/${FOLDERS.build}`, targetsData)
+				assets.prepareAssetsFolder(context, targetsData)
 				// retrieve dps assets
 				await assets.retrieveImages(targetsData)
 				log({ targetsData })
@@ -28,6 +29,10 @@ switch (argv.cmd) {
 				assets.generateImports(targetsData)
 				// recompile 3-traffic versions with inlined assets
 				await compiler.execute(targets, { inlined: true })
+				// remove build.js imports, so debug/traffic/dps-local compiles still work
+				assets.cleanupImports(targetsData)
+				// remove assets
+				assets.cleanupAssetsFolder(context, targetsData)
 			})()
 		break
 }
