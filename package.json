@@ -20,7 +20,6 @@
 	"author": "160over90",
 	"license": "MIT",
 	"dependencies": {
-		"@ff0000-ad-tech/comment-hooks": "^1.1.0",
 		"@ff0000-ad-tech/debug": "latest",
 		"axios": "^0.21.1",
 		"minimist": "^1.2.0",
@@ -28,12 +27,11 @@
 		"rimraf": "^3.0.2"
 	},
 	"devDependencies": {
-		"babel-eslint": "^8.2.1",
-		"eslint": "^4.16.0",
-		"eslint-config-prettier": "^2.9.0",
-		"eslint-plugin-prettier": "^2.5.0",
-		"np": "^2.19.0",
-		"prettier": "^1.10.2"
+		"@babel/eslint-parser": "^7.15.0",
+		"eslint": "^7.32.0",
+		"eslint-config-prettier": "^8.3.0",
+		"np": "^7.5.0",
+		"prettier": "^2.3.2"
 	},
 	"wp-creative-server": {
 		"routes": {
