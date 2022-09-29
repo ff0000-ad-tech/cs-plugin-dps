@@ -14,6 +14,7 @@ const FOLDERS = JSON.parse(argv.folders)
 switch (argv.cmd) {
 	case 'render':
 		const targets = JSON.parse(argv.targets)
+		try {
 			; (async () => {
 				const context = `${argv.context}/${FOLDERS.build}`
 				// ensure that 3-traffic versions have been compiled
@@ -34,5 +35,9 @@ switch (argv.cmd) {
 				// remove assets
 				assets.cleanupAssetsFolder(context, targetsData)
 			})()
+		} catch (err) {
+			log(err)
+			throw err
+		}
 		break
 }
